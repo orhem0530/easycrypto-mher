@@ -29,7 +29,7 @@
 </head>
 <body class="flex flex-col min-h-screen text-gray-800">
 
-    <!-- FULL WIDTH HEADER WITH NEW BRANDING -->
+    <!-- FULL WIDTH HEADER WITH BRANDING -->
     <header class="w-full p-4 bg-brand-600 text-white shadow-md z-50">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-2">
             <div class="flex items-center space-x-3">
@@ -63,7 +63,8 @@
                 </div>
                 
                 <div class="space-y-3">
-                    <div class="bg-gray-50 hover:bg-white p-3 rounded-xl border border-gray-100 flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="changeChartSymbol('BINANCE:BTCUSDT', 'Bitcoin (BTC)')">
+                    <!-- BTC Click Handler -->
+                    <div id="card-btc" class="bg-brand-50 border-2 border-brand-500 p-3 rounded-xl flex items-center justify-between transition-all shadow-sm cursor-pointer" onclick="selectCrypto('btc', 'BINANCE:BTCUSDT', 'Bitcoin (BTC)')">
                         <div class="flex items-center space-x-3">
                             <i class="fab fa-bitcoin text-orange-500 text-2xl"></i>
                             <div>
@@ -74,7 +75,8 @@
                         <p class="text-sm font-black text-gray-900" id="price-btc">₱--</p>
                     </div>
 
-                    <div class="bg-gray-50 hover:bg-white p-3 rounded-xl border border-gray-100 flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="changeChartSymbol('BINANCE:ETHUSDT', 'Ethereum (ETH)')">
+                    <!-- ETH Click Handler -->
+                    <div id="card-eth" class="bg-gray-50 hover:bg-white border border-gray-100 p-3 rounded-xl flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="selectCrypto('eth', 'BINANCE:ETHUSDT', 'Ethereum (ETH)')">
                         <div class="flex items-center space-x-3">
                             <i class="fab fa-ethereum text-blue-500 text-2xl"></i>
                             <div>
@@ -85,7 +87,8 @@
                         <p class="text-sm font-black text-gray-900" id="price-eth">₱--</p>
                     </div>
 
-                    <div class="bg-gray-50 hover:bg-white p-3 rounded-xl border border-gray-100 flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="changeChartSymbol('BINANCE:XRPUSDT', 'Ripple (XRP)')">
+                    <!-- XRP Click Handler -->
+                    <div id="card-xrp" class="bg-gray-50 hover:bg-white border border-gray-100 p-3 rounded-xl flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="selectCrypto('xrp', 'BINANCE:XRPUSDT', 'Ripple (XRP)')">
                         <div class="flex items-center space-x-3">
                             <div class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-700 text-xs">X</div>
                             <div>
@@ -143,7 +146,7 @@
         <!-- RIGHT MAIN CONTENT AREA -->
         <main class="flex-1 flex flex-col gap-6 relative min-w-0">
             
-            <!-- TOP RIGHT LARGE BOX (Interactive Graph with Real-time Interval Switcher) -->
+            <!-- TOP RIGHT LARGE BOX (Interactive Graph) -->
             <section class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 flex flex-col h-[420px]">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
                     <div>
@@ -159,12 +162,76 @@
                 </div>
                 
                 <div class="flex-1 w-full rounded-xl overflow-hidden border border-gray-200 relative bg-gray-50" id="tradingview-wrapper">
-                    <!-- TradingView Widget Container -->
                     <div id="tradingview-container" style="height:100%;width:100%"></div>
                 </div>
             </section>
 
-            <!-- MIDDLE SECTION: TOP CRYPTOS RANKING & TRADING SUGGESTION -->
+            <!-- PROFESSIONAL ANALYST MARKET INSIGHTS SECTION -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                <div class="flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center font-bold shadow-sm">
+                            <i class="fas fa-chart-line text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-base">Professional Analyst Market Insights</h3>
+                            <p class="text-xs text-gray-500">Real-time trading directives, entry zones, and profit targets for spot traders.</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold bg-green-100 text-green-800 px-3 py-1 rounded-full uppercase tracking-wider shadow-inner">
+                        <i class="fas fa-shield-alt mr-1"></i> Verified Strategy
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <!-- BTC Directive -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-gray-900 text-sm flex items-center"><i class="fab fa-bitcoin text-orange-500 mr-1.5 text-base"></i> Bitcoin (BTC)</span>
+                                <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">ACCUMULATE</span>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-2"><strong class="text-gray-800">When to Buy:</strong> On macro pullbacks near major support zones. Scale in gradually rather than lump-sum purchasing.</p>
+                            <p class="text-xs text-gray-600 mt-1.5"><strong class="text-gray-800">When to Sell:</strong> Take partial profits incrementally as price approaches upper resistance thresholds.</p>
+                        </div>
+                        <div class="mt-4 pt-2 border-t border-gray-200 text-[11px] text-gray-500 font-medium">
+                            Risk Bias: <span class="text-green-600 font-bold">Low-Moderate (Core Holding)</span>
+                        </div>
+                    </div>
+
+                    <!-- ETH Directive -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-gray-900 text-sm flex items-center"><i class="fab fa-ethereum text-blue-500 mr-1.5 text-base"></i> Ethereum (ETH)</span>
+                                <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded">HOLD / WATCH</span>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-2"><strong class="text-gray-800">When to Buy:</strong> When network gas fees stabilize and price confirms support on daily moving averages.</p>
+                            <p class="text-xs text-gray-600 mt-1.5"><strong class="text-gray-800">When to Sell:</strong> During aggressive altcoin momentum rallies when RSI indicates overbought territory.</p>
+                        </div>
+                        <div class="mt-4 pt-2 border-t border-gray-200 text-[11px] text-gray-500 font-medium">
+                            Risk Bias: <span class="text-blue-600 font-bold">Moderate (Growth Asset)</span>
+                        </div>
+                    </div>
+
+                    <!-- XRP Directive -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-gray-900 text-sm flex items-center"><span class="w-4 h-4 bg-gray-200 rounded-full inline-flex items-center justify-center font-bold text-[10px] text-gray-700 mr-1.5">X</span> Ripple (XRP)</span>
+                                <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded">SWING TRADE</span>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-2"><strong class="text-gray-800">When to Buy:</strong> On high-volume breakout confirmations following consolidation channels.</p>
+                            <p class="text-xs text-gray-600 mt-1.5"><strong class="text-gray-800">When to Sell:</strong> Rapidly take capital off the table during speculative volume spikes to lock in gains.</p>
+                        </div>
+                        <div class="mt-4 pt-2 border-t border-gray-200 text-[11px] text-gray-500 font-medium">
+                            Risk Bias: <span class="text-purple-600 font-bold">High (High Volatility)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MIDDLE SECTION: TOP CRYPTOS RANKING -->
             <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
                 <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-2 flex items-center">
                     <i class="fas fa-trophy text-amber-500 mr-2"></i> Top Cryptos Ranked for Trading (Present Market)
@@ -225,25 +292,28 @@
             <!-- BOTTOM RIGHT SPLIT (2 Boxes) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                 
-                <!-- Bottom Box 1: What to do (AI Suggestion) -->
+                <!-- Bottom Box 1: Interactive 'What Should I Do?' AI Suggestion Box -->
                 <section class="bg-gradient-to-br from-brand-900 to-brand-700 p-6 rounded-2xl shadow-sm text-white relative overflow-hidden group hover:shadow-md transition-shadow">
                     <i class="fas fa-robot absolute -right-4 -top-4 text-7xl text-white/10 group-hover:scale-110 transition-transform duration-500"></i>
                     <div class="relative z-10">
-                        <h3 class="text-xs font-bold text-brand-200 uppercase tracking-wider mb-4"><i class="fas fa-magic mr-2"></i>What should I do?</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xs font-bold text-brand-200 uppercase tracking-wider"><i class="fas fa-magic mr-2"></i>What should I do? (<span id="selected-coin-label">BTC</span>)</h3>
+                            <span class="text-[9px] bg-brand-800 text-brand-200 px-2 py-0.5 rounded font-mono">Interactive View</span>
+                        </div>
                         
                         <div class="bg-white rounded-xl p-4 text-gray-900 mb-4 flex items-center justify-between shadow-inner">
                             <div>
-                                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Live Market Suggestion</p>
-                                <h4 class="text-2xl font-black text-brand-600">HOLD (Wait)</h4>
+                                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Analyst Directive</p>
+                                <h4 class="text-2xl font-black text-brand-600" id="ai-action-text">ACCUMULATE (Buy Dips)</h4>
                             </div>
-                            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-lg text-gray-500">
-                                <i class="fas fa-hand-paper"></i>
+                            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-lg text-brand-600" id="ai-icon-box">
+                                <i class="fas fa-shopping-cart" id="ai-icon"></i>
                             </div>
                         </div>
 
-                        <h4 class="font-bold text-sm mb-1">Strategic Guidance:</h4>
-                        <p class="text-xs text-brand-50 leading-relaxed">
-                            The market is experiencing short-term volatility swings. Move with precision and discipline. Wait for prices to stabilize near key support before making your entry on Coins.ph.
+                        <h4 class="font-bold text-sm mb-1">Plain English Reason:</h4>
+                        <p class="text-xs text-brand-50 leading-relaxed" id="ai-reason-text">
+                            Bitcoin has deep market liquidity and strong institutional backing. When price dips occur near key supports, it presents an optimal accumulation window for beginner spot traders on Coins.ph.
                         </p>
                     </div>
                 </section>
@@ -260,7 +330,6 @@
                         </p>
                     </div>
                     
-                    <!-- Blinking Referral Button -->
                     <a href="https://www.coins.ph/en-ph/register?invite_code=1340168328661050775&broker=9001" target="_blank" rel="noopener noreferrer" class="block w-full bg-blue-600 text-white text-center text-sm font-bold p-3.5 rounded-xl shadow-lg hover:bg-blue-700 active:scale-95 transition-all animate-pulse ring-4 ring-blue-300">
                         <i class="fas fa-wallet mr-2"></i> Open Coins.ph App
                     </a>
@@ -278,6 +347,33 @@
     <script>
         let currentSymbol = "BINANCE:BTCUSDT";
         let currentTimeframe = "D";
+
+        const cryptoDirectives = {
+            btc: {
+                name: "Bitcoin (BTC)",
+                symbol: "BINANCE:BTCUSDT",
+                action: "ACCUMULATE (Buy Dips)",
+                reason: "Bitcoin has deep market liquidity and strong institutional backing. When price dips occur near key supports, it presents an optimal accumulation window for beginner spot traders on Coins.ph.",
+                icon: "fa-shopping-cart",
+                color: "text-brand-600"
+            },
+            eth: {
+                name: "Ethereum (ETH)",
+                symbol: "BINANCE:ETHUSDT",
+                action: "HOLD / WATCH",
+                reason: "Ethereum drives decentralized finance and smart contract innovation. Watch for gas fee stabilization and daily moving average tests before opening new positions.",
+                icon: "fas fa-hand-paper",
+                color: "text-blue-600"
+            },
+            xrp: {
+                name: "Ripple (XRP)",
+                symbol: "BINANCE:XRPUSDT",
+                action: "SWING TRADE (Sell Spikes)",
+                reason: "XRP experiences rapid momentum spikes driven by high retail volume and cross-border settlement news. Lock in profits quickly during sudden volatility candles.",
+                icon: "fas fa-exchange-alt",
+                color: "text-purple-600"
+            }
+        };
 
         function initTradingViewChart(symbol, interval) {
             const container = document.getElementById('tradingview-container');
@@ -305,10 +401,29 @@
             container.appendChild(script);
         }
 
-        window.changeChartSymbol = function(symbol, title) {
+        window.selectCrypto = function(key, symbol, title) {
+            // Update chart symbol
             currentSymbol = symbol;
             document.getElementById('chart-title-label').innerText = `Market Trend: ${title}`;
             initTradingViewChart(currentSymbol, currentTimeframe);
+
+            // Highlight selected card on the left
+            ['btc', 'eth', 'xrp'].forEach(c => {
+                const card = document.getElementById(`card-${c}`);
+                if (c === key) {
+                    card.className = "bg-brand-50 border-2 border-brand-500 p-3 rounded-xl flex items-center justify-between transition-all shadow-sm cursor-pointer";
+                } else {
+                    card.className = "bg-gray-50 hover:bg-white border border-gray-100 p-3 rounded-xl flex items-center justify-between transition-all hover:shadow-md cursor-pointer";
+                }
+            });
+
+            // Update interactive 'What Should I Do?' box
+            const info = cryptoDirectives[key];
+            document.getElementById('selected-coin-label').innerText = key.toUpperCase();
+            document.getElementById('ai-action-text').innerText = info.action;
+            document.getElementById('ai-action-text').className = `text-2xl font-black ${info.color}`;
+            document.getElementById('ai-reason-text').innerText = info.reason;
+            document.getElementById('ai-icon').className = info.icon;
         };
 
         window.updateChartInterval = function(interval, btn) {
