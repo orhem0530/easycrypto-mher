@@ -63,7 +63,6 @@
                 </div>
                 
                 <div class="space-y-3">
-                    <!-- BTC Click Handler -->
                     <div id="card-btc" class="bg-brand-50 border-2 border-brand-500 p-3 rounded-xl flex items-center justify-between transition-all shadow-sm cursor-pointer" onclick="selectCrypto('btc', 'BINANCE:BTCUSDT', 'Bitcoin (BTC)')">
                         <div class="flex items-center space-x-3">
                             <i class="fab fa-bitcoin text-orange-500 text-2xl"></i>
@@ -75,7 +74,6 @@
                         <p class="text-sm font-black text-gray-900" id="price-btc">₱--</p>
                     </div>
 
-                    <!-- ETH Click Handler -->
                     <div id="card-eth" class="bg-gray-50 hover:bg-white border border-gray-100 p-3 rounded-xl flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="selectCrypto('eth', 'BINANCE:ETHUSDT', 'Ethereum (ETH)')">
                         <div class="flex items-center space-x-3">
                             <i class="fab fa-ethereum text-blue-500 text-2xl"></i>
@@ -87,7 +85,6 @@
                         <p class="text-sm font-black text-gray-900" id="price-eth">₱--</p>
                     </div>
 
-                    <!-- XRP Click Handler -->
                     <div id="card-xrp" class="bg-gray-50 hover:bg-white border border-gray-100 p-3 rounded-xl flex items-center justify-between transition-all hover:shadow-md cursor-pointer" onclick="selectCrypto('xrp', 'BINANCE:XRPUSDT', 'Ripple (XRP)')">
                         <div class="flex items-center space-x-3">
                             <div class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-700 text-xs">X</div>
@@ -101,7 +98,36 @@
                 </div>
             </div>
             
-            <!-- Tip Jar (GCash, BTC, ETH) -->
+            <!-- CRYPTO GLOSSARY FOR HIGH SCHOOLERS -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200">
+                <h3 class="text-xs font-bold text-gray-800 mb-3 flex items-center uppercase tracking-wider">
+                    <i class="fas fa-book text-brand-600 mr-2"></i> Crypto Glossary
+                </h3>
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <p class="font-bold text-gray-900">🐂 Bull Market</p>
+                        <p class="text-gray-500 text-[11px]">Prices are going up overall; people are optimistic.</p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-2">
+                        <p class="font-bold text-gray-900">🐻 Bear Market</p>
+                        <p class="text-gray-500 text-[11px]">Prices are falling overall; market is in a slump.</p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-2">
+                        <p class="font-bold text-gray-900">🛡️ Support & Resistance</p>
+                        <p class="text-gray-500 text-[11px]">Floor price where buying stops a drop (Support) vs ceiling where selling stops a rise (Resistance).</p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-2">
+                        <p class="font-bold text-gray-900">🌊 Volatility & Liquidity</p>
+                        <p class="text-gray-500 text-[11px]">How fast prices swing (Volatility) and how easily you can cash out (Liquidity).</p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-2">
+                        <p class="font-bold text-gray-900">🪙 Spot Trading</p>
+                        <p class="text-gray-500 text-[11px]">Buying actual crypto coins to keep and sell later when price goes up.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tip Jar (Fixed Google Drive Direct Links) -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 mt-auto text-center">
                 <h3 class="text-xs font-bold text-gray-800 mb-2"><i class="fas fa-coffee text-brand-500 mr-2"></i>Support the App</h3>
                 
@@ -111,12 +137,14 @@
                     <button onclick="switchTipTab('eth')" id="tab-eth" class="flex-1 py-1.5 text-[9px] font-bold rounded text-gray-500 hover:text-blue-500 transition-all">ETH</button>
                 </div>
                 
+                <!-- GCash QR (Fixed Direct Link) -->
                 <div id="content-gcash" class="block animate-fade-in">
-                    <img src="https://drive.google.com/uc?export=view&id=1olPSgntH2jJtSCz1ZfZ9CfpycOhSjvpN" alt="GCash QR Code" class="w-36 h-36 mx-auto rounded-xl shadow-sm border border-gray-100 object-cover">
+                    <img src="https://lh3.googleusercontent.com/d/1olPSgntH2jJtSCz1ZfZ9CfpycOhSjvpN=w1000" alt="GCash QR Code" class="w-36 h-36 mx-auto rounded-xl shadow-sm border border-gray-100 object-cover">
                 </div>
 
+                <!-- Bitcoin QR (Fixed Direct Link) -->
                 <div id="content-btc" class="hidden animate-fade-in">
-                    <img src="https://drive.google.com/uc?export=view&id=1yc6VFarlr0UOdYHygqhIOMqRmlwm1Rbu" alt="Bitcoin QR Code" class="w-28 h-28 mx-auto rounded-xl shadow-sm border border-gray-100 mb-3 object-cover">
+                    <img src="https://lh3.googleusercontent.com/d/1yc6VFarlr0UOdYHygqhIOMqRmlwm1Rbu=w1000" alt="Bitcoin QR Code" class="w-32 h-32 mx-auto rounded-xl shadow-sm border border-gray-100 mb-2 object-cover">
                     <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 flex justify-between items-center gap-2">
                         <div class="text-left overflow-hidden">
                             <p class="text-[9px] text-gray-400 font-bold uppercase">BTC Address</p>
@@ -126,8 +154,9 @@
                     </div>
                 </div>
 
+                <!-- Ethereum QR (Fixed Direct Link) -->
                 <div id="content-eth" class="hidden animate-fade-in">
-                    <img src="https://drive.google.com/uc?export=view&id=188kO_A2VSnv_BVgvJig18l0s7jVw3AHy" alt="Ethereum QR Code" class="w-28 h-28 mx-auto rounded-xl shadow-sm border border-gray-100 mb-3 object-cover">
+                    <img src="https://lh3.googleusercontent.com/d/188kO_A2VSnv_BVgvJig18l0s7jVw3AHy=w1000" alt="Ethereum QR Code" class="w-32 h-32 mx-auto rounded-xl shadow-sm border border-gray-100 mb-2 object-cover">
                     <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 flex justify-between items-center gap-2">
                         <div class="text-left overflow-hidden">
                             <p class="text-[9px] text-gray-400 font-bold uppercase">ETH Address</p>
@@ -402,12 +431,10 @@
         }
 
         window.selectCrypto = function(key, symbol, title) {
-            // Update chart symbol
             currentSymbol = symbol;
             document.getElementById('chart-title-label').innerText = `Market Trend: ${title}`;
             initTradingViewChart(currentSymbol, currentTimeframe);
 
-            // Highlight selected card on the left
             ['btc', 'eth', 'xrp'].forEach(c => {
                 const card = document.getElementById(`card-${c}`);
                 if (c === key) {
@@ -417,7 +444,6 @@
                 }
             });
 
-            // Update interactive 'What Should I Do?' box
             const info = cryptoDirectives[key];
             document.getElementById('selected-coin-label').innerText = key.toUpperCase();
             document.getElementById('ai-action-text').innerText = info.action;
